@@ -1,0 +1,26 @@
+{
+  "name": "bash-jump",
+  "author": "Fraasi <fraasi.gh@gmail.com> (https://github.com/fraasi/)",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "filenames": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["git", "bash", "folder", "jump", "find", "shell", "cli"],
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fraasi/folder-file-names.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Fraasi/folder-file-names/issues"
+  },
+  "homepage": "https://github.com/Fraasi/folder-file-names#readme",
+  "dependencies": {
+    "commander": "^2.19.0"
+  }
+}
