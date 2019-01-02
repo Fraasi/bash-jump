@@ -10,7 +10,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["git", "bash", "folder", "jump", "find", "shell", "cli"],
+  "keywords": [
+    "git",
+    "bash",
+    "folder",
+    "jump",
+    "find",
+    "shell",
+    "cli",
+    "open"
+  ],
   "license": "ISC",
   "repository": {
     "type": "git",
