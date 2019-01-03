@@ -9,7 +9,7 @@ Node CLI to quickly open git-bash in another folder.
 ## Features & other related ramblings
 
 * Brute force recursive search :muscle:
-* **Case** (**& typo**) **sensitive!** 'Folder' !== 'folder' & starting directory must exist or  (╯°□°)╯︵ ┻━┻
+* **Case** (& typo) **sensitive!** 'Folder' !== 'folder' & starting directory must exist or  (╯°□°)╯︵ ┻━┻
 * Default search start is current folder, or if `BASH_JUMP` env variable is set, the folder set in env variable, or the second argument.
 * To set env variabe: `$ export BASH_JUMP=G:\\MyFolder` for example.
 * On find, runs `start "" "C:\\Program Files\\Git\\bin\\sh.exe" --login`, so needs to have git bash installed to work.

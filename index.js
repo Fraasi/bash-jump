@@ -24,5 +24,5 @@ if (typeof dirToFind === 'undefined') {
 // console.log(process.env.BASH_JUMP)
 
 if (!startDir) startDir = process.env.BASH_JUMP
-console.log('startDir:', startDir);
+// console.log('startDir:', startDir);
 bashJump(dirToFind, startDir, program.bash)
