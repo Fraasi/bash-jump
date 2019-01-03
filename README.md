@@ -4,7 +4,12 @@ Node CLI to quickly open git-bash in another folder.
 
 ### todo
 * [ ] Maybe use [this](https://www.npmjs.com/package/folder-walker), instead my own 'algorithm'...
-* [ ] add open explorer flag
+
+## Install
+(for dev purposes, npm package is coming)
+```
+$ npm install fraasi/bash-jump
+```
 
 ## Features & other related ramblings
 
@@ -13,19 +18,31 @@ Node CLI to quickly open git-bash in another folder.
 * Default search start is current folder, or if `BASH_JUMP` env variable is set, the folder set in env variable, or the second argument.
 * To set env variabe: `$ export BASH_JUMP=G:\\MyFolder` for example.
 * On find, runs `start "" "C:\\Program Files\\Git\\bin\\sh.exe" --login`, so needs to have git bash installed to work.
-* Flags:
-  * --no-bash or -B, finds folder and path, but does not open new bash shell.
+* If folder to search is just a dot ('.'), opens new shell in current folder.
 
 ## Usage
 
-To search for myProject folder starting from current (or env variable if set) folder:  
+```
+$ bj -h
+Usage: bj [options] <folderToFind> [startSearchFrom]
+
+Options:
+  -V, --version   output the version number
+  -B, --no-bash   find folder and path, do not open bash
+  -e, --explorer  find folder and path and open explorer
+  -h, --help      output usage information
+```
+### Examples
+To search for myProject folder starting from current (or env variable if set) folder and open new shell is simple:  
 `$ bj myProject`  
-To search for myApplication folder in program files without opening new shell:  
-`$ bj -B myApplication "C:\\Program Files"`  
+To search for myApplication folder in program files without opening new shell, but opening file explorer:  
+`$ bj -Be myApplication "C:\\Program Files"`  
+To open new shell for the current folder just use a dot for the folder to search:  
+`$ bj .`  
 
 
 
-* node_modules & .git folders excluded from search to keep it fast.  
+#### Node_modules & .git folders excluded from search to keep it fast.  
 
 All included:
 <pre>

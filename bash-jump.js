@@ -1,17 +1,30 @@
 const path = require('path')
 const fs = require('fs')
-const { spawn } = require('child_process')
+const { spawn, exec } = require('child_process')
 
 let folderCount = 0
 let found = false
 let width = process.stdout.columns - 9
 let returnPath
 let openBash
+let openExplorer
 let startTime
 
-function findDir(dirToFind, startDir = process.cwd(), bash) {
+function findDir(dirToFind, startDir = process.cwd(), bash, explorer) {
+  if (dirToFind === '.') {
+    console.log('\n Opening new git bash...')
+    spawn('start "" "C:\\Program Files\\Git\\bin\\sh.exe" --login', {
+      shell: true,
+      cwd: process.cwd(),
+      detached: true,
+      stdio: 'ignore'
+    })
+    .on('error', e => console.log('Spawn shell error: ', e))
+    return 
+  }
   if (folderCount === 0) {
     openBash = bash
+    openExplorer = explorer
     console.log(`\n Searching for folder '${dirToFind}'\n Starting from '${startDir}'\n`)
   }
 
@@ -49,28 +62,30 @@ function end() {
   const time = ((stopTime - startTime) / 1000).toFixed(2)
   process.stdout.clearLine();
   process.stdout.cursorTo(0);
-  const print = returnPath ? `Found folder!\n path: '${returnPath}'` : 'No such folder found!'
+  const print = returnPath ? `Found folder!\n Path: '${returnPath}'` : 'No such folder found!'
   console.log(` Traversed ${folderCount} folders in ${time}s\n ${print}`)
 
   if (found && returnPath && openBash) {
-    try {
+    console.log('\n Opening new git bash...')
       spawn('start "" "C:\\Program Files\\Git\\bin\\sh.exe" --login', {
         shell: true,
         cwd: returnPath,
         detached: true,
         stdio: 'ignore'
       })
-      console.log('\n Opening new git bash...')
-    } catch (e) {
-      console.log('\n Spawn error: ', e);
-    }
+      .on('error', e => console.log('Spawn shell error: ', e))
+  }
+  if (found && returnPath && openExplorer) {
+    console.log('\n Opening file explorer...')
+    exec(`start ${returnPath}`)
+      .on('error', e => console.log('Open explorer error: ', e))
   }
 }
 
-function init(dirToFind, startDir, bash) {
+function init(dirToFind, startDir, bash, explorer) {
   startTime = new Date()
-  findDir(dirToFind, startDir, bash)
-  end()
+  findDir(dirToFind, startDir, bash, explorer)
+  if (dirToFind !== '.') end()
 }
 
 module.exports = init;
