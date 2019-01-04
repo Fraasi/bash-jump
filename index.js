@@ -8,7 +8,7 @@ program
   .version(pkg.version)
   .name('bj')
   .option('-B, --no-bash', 'find folder and path, do not open bash')
-  .option('-e, --explorer', 'find folder and path and open explorer')
+  .option('-e, --explorer', 'find folder and path and open file explorer')
   .arguments('<folderToFind> [startSearchFrom]')
   .action(function (folderToFind, startSearchFrom) {
      dirToFind = folderToFind

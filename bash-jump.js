@@ -13,7 +13,7 @@ let startTime
 function findDir(dirToFind, startDir = process.cwd(), bash, explorer) {
   if (dirToFind === '.') {
     console.log('\n Opening new git bash...')
-    spawn('start "" "C:\\Program Files\\Git\\bin\\sh.exe" --login', {
+    spawn('start bash --login', {
       shell: true,
       cwd: process.cwd(),
       detached: true,
@@ -67,7 +67,7 @@ function end() {
 
   if (found && returnPath && openBash) {
     console.log('\n Opening new git bash...')
-      spawn('start "" "C:\\Program Files\\Git\\bin\\sh.exe" --login', {
+      spawn('start bash --login', {
         shell: true,
         cwd: returnPath,
         detached: true,
@@ -77,7 +77,8 @@ function end() {
   }
   if (found && returnPath && openExplorer) {
     console.log('\n Opening file explorer...')
-    exec(`start ${returnPath}`)
+    // start had some path problems & weird behaviour, explorer seems to work
+    exec(`explorer ${returnPath}`)
       .on('error', e => console.log('Open explorer error: ', e))
   }
 }
