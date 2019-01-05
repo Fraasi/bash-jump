@@ -43,7 +43,7 @@ function findDir(dirToFind, startDir = process.cwd(), bash, explorer) {
         /*
         * Error: EPERM: operation not permitted, lstat
         * Error: EBUSY: File is busy
-        * Silently just jump over & continue
+        * Silently just jump over & continue recursion
         */
       }
       if (isDir && (file === dirToFind)) {

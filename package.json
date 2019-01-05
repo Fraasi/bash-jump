@@ -1,8 +1,8 @@
 {
   "name": "bash-jump",
   "author": "Fraasi <fraasi.gh@gmail.com> (https://github.com/fraasi/)",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
+  "description": "Node CLI to quickly open git-bash (or file explorer) in another folder",
   "main": "index.js",
   "bin": {
     "bj": "./index.js"
@@ -24,12 +24,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Fraasi/folder-file-names.git"
+    "url": "git+https://github.com/Fraasi/bash-jump.git"
   },
   "bugs": {
-    "url": "https://github.com/Fraasi/folder-file-names/issues"
+    "url": "https://github.com/Fraasi/bash-jump/issues"
   },
-  "homepage": "https://github.com/Fraasi/folder-file-names#readme",
+  "homepage": "https://github.com/Fraasi/bash-jump#readme",
   "dependencies": {
     "commander": "^2.19.0"
   }

@@ -1,14 +1,14 @@
 # Bash-jump
 
-Node CLI to quickly open git-bash in another folder.  
+Node CLI to quickly open git-bash (or file explorer) in another folder.  
 
-**Note:** This propably won't work, or at least has some bugs in linux & mac. I have no way of testing/developing on these platforms. If you want to help/encounter a bug, please file an issue and I'll see what I can do.  
+**Note:** This propably won't work, or at least has some bugs in linux & mac. I have no way of testing/developing on these platforms. If you want to help/encounter a bug, please file an issue and I'll see what I can do. 
 
+  
+## Install  [![npm version](https://img.shields.io/npm/v/bash-jump.svg?colorB=green&style=plastic&label=npm)](https://www.npmjs.com/package/bash-jump)
 
-## Install
-(for dev purposes, npm package is coming)
 ```
-$ npm install fraasi/bash-jump -g
+$ npm install -g bash-jump
 ```
 
 ## Features & other related ramblings
