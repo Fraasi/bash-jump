@@ -1,7 +1,7 @@
 {
   "name": "bash-jump",
   "author": "Fraasi <fraasi.gh@gmail.com> (https://github.com/fraasi/)",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Node CLI to quickly open git-bash (or file explorer) in another folder",
   "main": "index.js",
   "bin": {
