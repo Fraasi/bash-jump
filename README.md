@@ -2,7 +2,7 @@
 
 Node CLI to quickly open git-bash (or file explorer) in another folder.  
 
-**Note:** This propably won't work, or at least has some bugs in linux & mac. I have no way of testing/developing on these platforms. If you want to help/encounter a bug, please file an issue and I'll see what I can do. 
+**Note:** This could have some bugs in linux & mac. I have no way of testing/developing on these platforms. If you want to help/encounter a bug, please file an issue at github and I'll see what I can do. 
 
   
 ## Install  [![npm version](https://img.shields.io/npm/v/bash-jump.svg?colorB=green&style=plastic&label=npm)](https://www.npmjs.com/package/bash-jump)
@@ -18,7 +18,7 @@ $ npm install -g bash-jump
 * Default search start is current folder, or if `BASH_JUMP` env variable is set, the folder set in env variable, or the second argument.
 * To set env variabe: `$ export BASH_JUMP=G:\\MyFolder` for example to start default search from 'G:\MyFolder'-folder.
 * To remove it: `$ unset BASH_JUMP`.
-* On find, runs `start bash --login`, so needs to have git bash installed to work.
+* On find, runs `bash --login`, so needs to have git bash installed to work.
 * If folder to search is just a dot ('.'), opens new shell in current folder.
 * The 'child program' can't close the parent shell it is running from, so there's no option for that. If you want to close the current shell after search, just add `&& exit` to the end. But be careful with your search, this will close the current shell wether the program opens a new one or not.
 

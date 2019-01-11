@@ -9,18 +9,20 @@ let returnPath
 let openBash
 let openExplorer
 let startTime
+const command = process.platform === 'win32' ? 'start bash --login' : 'bash --login'
+
 
 function findDir(dirToFind, startDir = process.cwd(), bash, explorer) {
   if (dirToFind === '.') {
     console.log('\n Opening new git bash...')
-    spawn('start bash --login', {
+    spawn(command, {
       shell: true,
       cwd: process.cwd(),
       detached: true,
       stdio: 'ignore'
     })
-    .on('error', e => console.log('Spawn shell error: ', e))
-    return 
+      .on('error', e => console.log('Spawn shell error: ', e))
+    return
   }
   if (folderCount === 0) {
     openBash = bash
@@ -67,18 +69,23 @@ function end() {
 
   if (found && returnPath && openBash) {
     console.log('\n Opening new git bash...')
-      spawn('start bash --login', {
-        shell: true,
-        cwd: returnPath,
-        detached: true,
-        stdio: 'ignore'
-      })
+    spawn(command, {
+      shell: true,
+      cwd: returnPath,
+      detached: true,
+      stdio: 'ignore'
+    })
       .on('error', e => console.log('Spawn shell error: ', e))
   }
   if (found && returnPath && openExplorer) {
     console.log('\n Opening file explorer...')
     // start had some path problems & weird behaviour, explorer seems to work
-    exec(`explorer ${returnPath}`)
+    const platform = process.platform === 'win32'
+      ? 'explorer'
+      : process.platform === 'darwin'
+        ? 'open'
+        : 'nautilus'
+    exec(`${platform} ${returnPath}`)
       .on('error', e => console.log('Open explorer error: ', e))
   }
 }
