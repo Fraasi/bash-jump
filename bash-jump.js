@@ -13,21 +13,12 @@ const command = process.platform === 'win32' ? 'start bash --login' : 'bash --lo
 
 
 function findDir(dirToFind, startDir = process.cwd(), bash, explorer) {
-  if (dirToFind === '.') {
-    console.log('\n Opening new git bash...')
-    spawn(command, {
-      shell: true,
-      cwd: process.cwd(),
-      detached: true,
-      stdio: 'ignore'
-    })
-      .on('error', e => console.log('Spawn shell error: ', e))
-    return
-  }
+
   if (folderCount === 0) {
     openBash = bash
     openExplorer = explorer
     console.log(`\n Searching for folder '${dirToFind}'\n Starting from '${startDir}'\n`)
+    dirToFind = dirToFind.toLowerCase()
   }
 
   if (!found) {
@@ -48,7 +39,7 @@ function findDir(dirToFind, startDir = process.cwd(), bash, explorer) {
         * Silently just jump over & continue recursion
         */
       }
-      if (isDir && (file === dirToFind)) {
+      if (isDir && (file.toLowerCase() === dirToFind)) {
         found = true
         returnPath = path.join(startDir, file)
         return
@@ -90,10 +81,21 @@ function end() {
   }
 }
 
-function init(dirToFind, startDir, bash, explorer) {
+function bashJump(dirToFind, startDir, bash, explorer) {
+  if (dirToFind === '.') {
+    console.log('\n Opening new git bash...')
+    spawn(command, {
+      shell: true,
+      cwd: process.cwd(),
+      detached: true,
+      stdio: 'ignore'
+    })
+      .on('error', e => console.log('Spawn shell error: ', e))
+    return
+  }
   startTime = new Date()
   findDir(dirToFind, startDir, bash, explorer)
-  if (dirToFind !== '.') end()
+  end()
 }
 
-module.exports = init;
+module.exports = bashJump;

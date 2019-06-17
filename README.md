@@ -14,7 +14,8 @@ $ npm install -g bash-jump
 ## Features & other related ramblings
 
 * Brute force recursive search :muscle:
-* **Case** (& [typo](https://i.imgur.com/Kaa8zvg.jpg)) **sensitive!** 'Folder' !== 'folder' & starting directory must exist or  (╯°□°)╯︵ ┻━┻
+* Case insensitive, [typo](https://i.imgur.com/Kaa8zvg.jpg) sensitive.
+* Folder to search must exist or  (╯°□°)╯︵ ┻━┻
 * Default search start is current folder, or if `BASH_JUMP` env variable is set, the folder set in env variable, or the second argument.
 * To set env variabe: `$ export BASH_JUMP=G:\\MyFolder` for example to start default search from 'G:\MyFolder'-folder.
 * To remove it: `$ unset BASH_JUMP`.

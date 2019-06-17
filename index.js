@@ -7,7 +7,7 @@ const bashJump = require('./bash-jump.js')
 program
   .version(pkg.version)
   .name('bj')
-  .option('-B, --no-bash', 'find folder and path, do not open bash')
+  .option('-B, --no-bash', 'find folder and path, do not open new bash')
   .option('-e, --explorer', 'find folder and path and open file explorer')
   .arguments('<folderToFind> [startSearchFrom]')
   .action(function (folderToFind, startSearchFrom) {
